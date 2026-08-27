@@ -1,0 +1,224 @@
+// Prisma Schema for RPM Morocco (B2B Health-Tech Remote Patient Monitoring)
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum Role {
+  admin
+  nurse
+  cardiologist
+  physician
+  technician
+  patient
+}
+
+enum StaffStatus {
+  available
+  busy
+  in_surgery
+  on_call
+  consultation
+  break
+  offline
+}
+
+enum ApptType {
+  consultation
+  follow_up
+  procedure
+  imaging
+  lab
+}
+
+enum ApptStatus {
+  scheduled
+  confirmed
+  done
+  cancelled
+}
+
+model User {
+  id           String     @id @default(uuid())
+  email        String     @unique
+  passwordHash String
+  name         String
+  role         Role       @default(patient)
+  clinic       String
+  patientId    String?    @unique
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+  auditLogs    AuditLog[]
+
+  patient Patient? @relation(fields: [patientId], references: [id])
+
+  @@index([email])
+  @@index([role])
+}
+
+model Patient {
+  id              String   @id
+  name            String
+  age             Int
+  condition       String
+  ward            String
+  spo2            Float
+  hr              Float
+  bpSys           Float
+  bpDia           Float
+  alert           Boolean  @default(false)
+  alertType       String   @default("")
+  acknowledged    Boolean  @default(false)
+  thresholdSpo2   Float    @default(90)
+  thresholdHrHigh Float    @default(110)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  user         User?
+  vitalLogs    VitalLog[]
+  appointments Appointment[]
+  medRecord    MedRecord?
+  notes        ClinicalNote[]
+  messages     ChatMessage[]
+
+  @@index([ward])
+  @@index([alert])
+}
+
+model VitalLog {
+  id        String   @id @default(uuid())
+  patientId String
+  spo2      Float
+  hr        Float
+  bpSys     Float
+  bpDia     Float
+  riskLevel String
+  timestamp DateTime @default(now())
+
+  patient Patient @relation(fields: [patientId], references: [id], onDelete: Cascade)
+
+  @@index([patientId, timestamp])
+}
+
+model Staff {
+  id             String      @id
+  name           String
+  role           Role
+  specialty      String
+  clinic         String
+  status         StaffStatus @default(available)
+  statusNote     String
+  phone          String
+  pager          String
+  currentPatient String?
+
+  @@index([role])
+  @@index([status])
+}
+
+model Appointment {
+  id         String     @id
+  patientId  String
+  doctorId   String
+  doctorName String
+  type       ApptType
+  title      String
+  date       String
+  time       String
+  duration   Int
+  location   String
+  notes      String
+  status     ApptStatus @default(scheduled)
+  createdBy  String
+  createdAt  DateTime   @default(now())
+
+  patient Patient @relation(fields: [patientId], references: [id], onDelete: Cascade)
+
+  @@index([patientId])
+  @@index([doctorId])
+  @@index([date])
+}
+
+model MedRecord {
+  patientId        String   @id
+  bloodType        String
+  allergies        String[] // JSON/Array of strings
+  emergencyContact String
+  emergencyPhone   String
+  address          String
+  gpsLat           Float
+  gpsLng           Float
+  insurance        String
+  subscriptionPlan String
+  deviceId         String
+
+  patient     Patient      @relation(fields: [patientId], references: [id], onDelete: Cascade)
+  medications Medication[]
+}
+
+model Medication {
+  id          String   @id @default(uuid())
+  patientId   String
+  name        String
+  dose        String
+  freq        String
+  by          String
+  since       String
+  indication  String
+  createdAt   DateTime @default(now())
+
+  medRecord MedRecord @relation(fields: [patientId], references: [patientId], onDelete: Cascade)
+
+  @@index([patientId])
+}
+
+model ClinicalNote {
+  id        String   @id @default(uuid())
+  patientId String
+  author    String
+  role      String
+  date      String
+  text      String
+  tags      String[]
+  createdAt DateTime @default(now())
+
+  patient Patient @relation(fields: [patientId], references: [id], onDelete: Cascade)
+
+  @@index([patientId])
+}
+
+model ChatMessage {
+  id        String   @id @default(uuid())
+  patientId String
+  from      String
+  role      String
+  text      String
+  time      String
+  isStaff   Boolean
+  createdAt DateTime @default(now())
+
+  patient Patient @relation(fields: [patientId], references: [id], onDelete: Cascade)
+
+  @@index([patientId])
+}
+
+model AuditLog {
+  id           String   @id @default(uuid())
+  timestamp    DateTime @default(now())
+  userId       String?
+  userRole     String?
+  action       String
+  targetEntity String
+  details      String
+  ipAddress    String?
+
+  user User? @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([timestamp])
+  @@index([action])
+}

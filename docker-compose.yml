@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  database:
+    image: postgres:16-alpine
+    container_name: rpm_postgres
+    environment:
+      POSTGRES_USER: rpm_user
+      POSTGRES_PASSWORD: rpm_secure_password_2026
+      POSTGRES_DB: rpm_morocco_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U rpm_user -d rpm_morocco_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: rpm_backend
+    environment:
+      PORT: 5000
+      NODE_ENV: production
+      DATABASE_URL: "postgresql://rpm_user:rpm_secure_password_2026@database:5432/rpm_morocco_db"
+      JWT_SECRET: rpm_morocco_super_secret_production_key_2026
+      CLIENT_ORIGIN: "http://localhost:5173"
+    ports:
+      - "5000:5000"
+    depends_on:
+      database:
+        condition: service_healthy
+
+volumes:
+  postgres_data:

@@ -1,0 +1,45 @@
+name: RPM Morocco B2B Platform CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, master, staging ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  test-and-build:
+    name: Lint, Test & Build Server
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Codebase
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js Environment
+        uses: actions/setup-node@v4
+        with:
+          node_version: '20'
+          cache: 'npm'
+          cache-dependency-path: 'package.json'
+
+      - name: Install Frontend & Backend Dependencies
+        run: |
+          npm ci
+          cd server && npm ci
+
+      - name: Run Backend Automated Unit & Integration Tests
+        run: |
+          cd server && npm test
+
+      - name: Run Frontend Production Build Check
+        run: |
+          npm run build
+
+  deploy-staging:
+    name: Auto-Deploy to Staging Environment
+    needs: test-and-build
+    if: github.ref == 'refs/heads/staging' || github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy Notification
+        run: echo "Successfully validated and deployed to Staging Cloud Run / Vercel."

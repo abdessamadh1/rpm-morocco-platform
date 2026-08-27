@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RPM Morocco — Business Plan Presentation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F4F7F6;
+  --card:#FFFFFF;
+  --ink:#0F312D;
+  --teal:#16605A;
+  --teal-soft:#E3EEEC;
+  --vital:#D6452F;
+  --ochre:#B9873F;
+  --line:#D9E2DF;
+  --mono:'IBM Plex Mono',monospace;
+  --sans:'IBM Plex Sans',sans-serif;
+  --disp:'Sora',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16.5px;line-height:1.65}
+
+/* ---------- layout ---------- */
+.rail{position:fixed;top:0;left:0;bottom:0;width:220px;border-right:1px solid var(--line);background:var(--paper);padding:28px 0 28px 26px;overflow-y:auto;z-index:10}
+.rail .brand{font-family:var(--disp);font-weight:800;font-size:15px;letter-spacing:.02em;margin-bottom:4px}
+.rail .brand span{color:var(--vital)}
+.rail .sub{font-family:var(--mono);font-size:10.5px;color:var(--teal);margin-bottom:26px}
+.rail a{display:block;text-decoration:none;color:var(--ink);font-family:var(--mono);font-size:11.5px;padding:6px 0;opacity:.62;border-left:2px solid transparent;padding-left:10px;margin-left:-12px;transition:opacity .15s}
+.rail a:hover,.rail a:focus-visible{opacity:1;border-left-color:var(--vital)}
+.rail a .n{color:var(--ochre);margin-right:6px}
+main{margin-left:220px}
+.wrap{max-width:900px;margin:0 auto;padding:0 44px}
+section{padding:78px 0;border-bottom:1px solid var(--line)}
+@media(max-width:920px){.rail{display:none}main{margin-left:0}.wrap{padding:0 22px}}
+
+/* ---------- type ---------- */
+.eyebrow{font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;color:var(--ochre);text-transform:uppercase;margin-bottom:14px}
+.eyebrow b{color:var(--vital);font-weight:500}
+h1{font-family:var(--disp);font-weight:800;font-size:clamp(34px,5.4vw,58px);line-height:1.06;letter-spacing:-.02em}
+h2{font-family:var(--disp);font-weight:700;font-size:clamp(25px,3.2vw,34px);line-height:1.15;letter-spacing:-.015em;margin-bottom:22px}
+h3{font-family:var(--disp);font-weight:600;font-size:18px;margin:30px 0 10px}
+p{margin-bottom:14px;max-width:70ch}
+strong{font-weight:600}
+.lead{font-size:19px;color:#2A4A45}
+
+/* ---------- badges & asides ---------- */
+.badge{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:.1em;padding:3px 9px;border-radius:3px;vertical-align:middle;margin-left:10px}
+.badge.orig{background:var(--teal-soft);color:var(--teal)}
+.badge.added{background:#FBEAE6;color:var(--vital)}
+.plain{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--teal);border-radius:6px;padding:18px 22px;margin:22px 0}
+.plain .pl{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;color:var(--teal);margin-bottom:8px}
+.plain p{font-size:15px;margin-bottom:8px}
+.plain p:last-child{margin-bottom:0}
+
+/* ---------- cards / grids / tables ---------- */
+.grid{display:grid;gap:16px;margin:24px 0}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g2{grid-template-columns:repeat(2,1fr)}
+@media(max-width:760px){.g3,.g2{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:22px}
+.card h4{font-family:var(--disp);font-weight:600;font-size:15.5px;margin-bottom:8px}
+.card p{font-size:14.5px;margin-bottom:0;color:#33534E}
+.card .k{font-family:var(--mono);font-size:10.5px;color:var(--ochre);letter-spacing:.1em;margin-bottom:10px}
+table{width:100%;border-collapse:collapse;margin:22px 0;background:var(--card);border:1px solid var(--line);border-radius:8px;overflow:hidden;font-size:14.5px}
+th{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-align:left;color:var(--teal);background:var(--teal-soft);padding:11px 16px;text-transform:uppercase}
+td{padding:12px 16px;border-top:1px solid var(--line);vertical-align:top}
+td.num,th.num{font-family:var(--mono);white-space:nowrap}
+.pos{color:var(--teal);font-weight:600}
+.neg{color:var(--vital)}
+
+/* ---------- hero ---------- */
+.hero{min-height:92vh;display:flex;flex-direction:column;justify-content:center;position:relative;border-bottom:1px solid var(--line);overflow:hidden}
+.hero .wrap{position:relative;z-index:2;padding-top:60px;padding-bottom:40px}
+.hero p.tag{font-size:19px;max-width:56ch;margin-top:20px;color:#2A4A45}
+.vitals{display:flex;gap:34px;flex-wrap:wrap;margin-top:44px}
+.vital{border-left:2px solid var(--line);padding-left:16px}
+.vital .v{font-family:var(--mono);font-size:26px;font-weight:500;color:var(--teal)}
+.vital .l{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;color:#5A756F;text-transform:uppercase;margin-top:2px}
+.ecg-wrap{position:absolute;left:0;right:0;bottom:7%;height:120px;z-index:1;opacity:.9}
+.ecg{width:100%;height:100%}
+.ecg path{fill:none;stroke:var(--vital);stroke-width:2.2;stroke-linejoin:round;stroke-linecap:round}
+@media(prefers-reduced-motion:no-preference){
+  .ecg path{stroke-dasharray:2400;stroke-dashoffset:2400;animation:trace 7s linear infinite}
+  @keyframes trace{to{stroke-dashoffset:0}}
+}
+
+/* ---------- pipeline diagram ---------- */
+.pipe{margin:26px 0;display:flex;flex-direction:column;gap:0;align-items:stretch}
+.node{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:14px 18px;display:flex;gap:14px;align-items:baseline}
+.node .t{font-family:var(--mono);font-size:13.5px;font-weight:500;color:var(--ink);min-width:230px}
+.node .d{font-size:13.5px;color:#4A665F}
+.node.alert{border-left:3px solid var(--vital)}
+.arrow{font-family:var(--mono);color:var(--teal);text-align:left;padding:4px 0 4px 26px;font-size:12px}
+@media(max-width:760px){.node{flex-direction:column;gap:4px}.node .t{min-width:0}}
+
+/* ---------- allocation bars ---------- */
+.bar-row{display:grid;grid-template-columns:270px 1fr 90px;gap:14px;align-items:center;margin:9px 0;font-size:14px}
+.bar-row .lbl{text-align:right;color:#33534E}
+.bar-row .amt{font-family:var(--mono);font-size:13px}
+.bar{height:14px;background:var(--teal-soft);border-radius:3px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--teal)}
+.bar i.hot{background:var(--vital)}
+@media(max-width:760px){.bar-row{grid-template-columns:1fr;gap:4px}.bar-row .lbl{text-align:left}}
+
+/* ---------- money flow ---------- */
+.flow{display:flex;gap:0;align-items:center;flex-wrap:wrap;margin:26px 0}
+.flow .fbox{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:16px 20px;text-align:center;flex:1;min-width:150px}
+.flow .fbox .a{font-family:var(--mono);font-size:22px;color:var(--teal);font-weight:500}
+.flow .fbox .a.hot{color:var(--vital)}
+.flow .fbox .w{font-size:12.5px;color:#5A756F;margin-top:4px}
+.flow .fa{font-family:var(--mono);color:var(--ochre);padding:0 12px;font-size:18px}
+
+/* ---------- timeline ---------- */
+.tl{border-left:2px solid var(--line);margin:26px 0 0 6px;padding-left:26px}
+.tl .step{position:relative;padding-bottom:26px}
+.tl .step::before{content:"";position:absolute;left:-33px;top:5px;width:12px;height:12px;border-radius:50%;background:var(--paper);border:2.5px solid var(--vital)}
+.tl .m{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--ochre);text-transform:uppercase}
+.tl h4{font-family:var(--disp);font-size:16px;font-weight:600;margin:3px 0 5px}
+.tl p{font-size:14.5px;margin:0;color:#33534E}
+
+/* ---------- checklist ---------- */
+.check li{list-style:none;padding:10px 0 10px 34px;position:relative;border-bottom:1px dashed var(--line);font-size:15px}
+.check li::before{content:"→";position:absolute;left:6px;color:var(--vital);font-family:var(--mono)}
+
+footer{padding:44px 0 64px;font-family:var(--mono);font-size:12px;color:#5A756F}
+:focus-visible{outline:2px solid var(--vital);outline-offset:2px}
+</style>
+</head>
+<body>
+
+<nav class="rail" aria-label="Sections">
+  <div class="brand">RPM<span>▮</span>MOROCCO</div>
+  <div class="sub">BUSINESS PLAN v2.0</div>
+  <a href="#s1"><span class="n">01</span>Executive Summary</a>
+  <a href="#s2"><span class="n">02</span>Market Opportunity</a>
+  <a href="#s3"><span class="n">03</span>Technical Architecture</a>
+  <a href="#s4"><span class="n">04</span>Hardware Strategy</a>
+  <a href="#s5"><span class="n">05</span>Regulatory &amp; Compliance</a>
+  <a href="#s6"><span class="n">06</span>Financial Plan</a>
+  <a href="#s7"><span class="n">07</span>Go-To-Market</a>
+  <a href="#s8"><span class="n">08</span>Risk Analysis</a>
+  <a href="#s9"><span class="n">09</span>12-Month Roadmap</a>
+  <a href="#s10"><span class="n">10</span>KPIs &amp; Metrics</a>
+  <a href="#s11"><span class="n">11</span>Open Items</a>
+</nav>
+
+<main>
+
+<!-- ================= HERO ================= -->
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">B2B HEALTH-TECH · MOROCCO · <b>SEED / BOOTSTRAPPED</b></div>
+    <h1>Remote Patient Monitoring, delivered as infrastructure.</h1>
+    <p class="tag">A cloud-native telemetry pipeline that lets one clinic nurse safely watch 100 discharged post-op patients at home — turning empty recovery beds into revenue and rural distance into a solved problem.</p>
+    <div class="vitals">
+      <div class="vital"><div class="v">$150K</div><div class="l">Founder capital</div></div>
+      <div class="vital"><div class="v">$0</div><div class="l">Upfront cost to clinics</div></div>
+      <div class="vital"><div class="v">$60–80</div><div class="l">Per patient / month</div></div>
+      <div class="vital"><div class="v">~$900</div><div class="l">Monthly cloud floor</div></div>
+      <div class="vital"><div class="v">10</div><div class="l">Clinic contracts · yr 1 target</div></div>
+    </div>
+  </div>
+  <div class="ecg-wrap" aria-hidden="true">
+    <svg class="ecg" viewBox="0 0 1440 120" preserveAspectRatio="none">
+      <path d="M0,60 L120,60 L140,52 L160,68 L180,60 L210,60 L222,20 L236,105 L250,45 L262,60 L420,60 L440,52 L460,68 L480,60 L510,60 L522,20 L536,105 L550,45 L562,60 L740,60 L760,52 L780,68 L800,60 L830,60 L842,20 L856,105 L870,45 L882,60 L1060,60 L1080,52 L1100,68 L1120,60 L1150,60 L1162,20 L1176,105 L1190,45 L1202,60 L1440,60"/>
+    </svg>
+  </div>
+</header>
+
+<div class="wrap" style="padding-top:34px;padding-bottom:0">
+  <div class="plain">
+    <div class="pl">HOW TO READ THIS DOCUMENT</div>
+    <p>Sections marked <span class="badge orig" style="margin-left:0">ORIGINAL</span> come from the founder's plan. Sections marked <span class="badge added" style="margin-left:0">ADDED</span> are new material that any serious investor or clinic partner will expect to see: market sizing, regulation, risks, roadmap, and KPIs. Every technical term is explained in a "Plain terms" box.</p>
+  </div>
+</div>
+
+<!-- ================= 01 ================= -->
+<section id="s1"><div class="wrap">
+  <div class="eyebrow">SECTION 01</div>
+  <h2>Executive Summary <span class="badge orig">ORIGINAL</span></h2>
+  <p class="lead">Moroccan private clinics earn from surgeries, not from occupied recovery beds — yet a nursing shortage and weak post-discharge care force them to keep patients hospitalized longer than needed.</p>
+
+  <div class="grid g3">
+    <div class="card"><div class="k">PROBLEM 01</div><h4>Severe nursing shortage</h4><p>Too few trained nurses track too many in-hospital patients, so manual observation doesn't scale.</p></div>
+    <div class="card"><div class="k">PROBLEM 02</div><h4>Bed turnover friction</h4><p>Clinics profit from active surgeries. Fear of post-op complications at home delays discharge and blocks profitable beds.</p></div>
+    <div class="card"><div class="k">PROBLEM 03</div><h4>Urban–rural care gap</h4><p>Elite facilities cluster in Casablanca, Rabat and Marrakech. Rural patients get world-class surgery, then go home to zero follow-up infrastructure.</p></div>
+  </div>
+
+  <h3>The solution</h3>
+  <p>A B2B <strong>Hardware-as-a-Service + Software-as-a-Service</strong> platform. Clinics hand discharging patients a pre-configured cellular wearable. The device streams vital signs (heart rhythm, SpO₂, blood pressure) to our cloud in real time. The moment a reading crosses a clinical threshold, the clinic's on-duty nurse gets an instant dashboard alert and SMS.</p>
+  <p><strong>Positioning:</strong> we do not build hardware and we do not deliver medical care. We are the <em>data fabric</em> — the pipe, the alarm, and the dashboard — that lets one desk nurse safely monitor up to 100 remote patients at once.</p>
+
+  <div class="plain">
+    <div class="pl">PLAIN TERMS</div>
+    <p><strong>RPM (Remote Patient Monitoring):</strong> tracking a patient's vital signs from their home instead of a hospital bed.</p>
+    <p><strong>HaaS / SaaS:</strong> the clinic never buys anything. It rents the devices and the software together for one monthly fee per patient — like leasing, not purchasing.</p>
+    <p><strong>Telemetry:</strong> the continuous stream of measurements (heart rate, oxygen, blood pressure) a device sends automatically over the mobile network.</p>
+  </div>
+</div></section>
+
+<!-- ================= 02 ================= -->
+<section id="s2"><div class="wrap">
+  <div class="eyebrow">SECTION 02</div>
+  <h2>Market Opportunity <span class="badge added">ADDED</span></h2>
+  <p class="lead">Investors will ask "how big is this?" before anything else. Here is the sizing framework — the exact figures must be validated in the field during the pilot phase.</p>
+
+  <table>
+    <tr><th>Layer</th><th>Definition</th><th>Working assumption</th></tr>
+    <tr><td><strong>TAM</strong> (Total)</td><td>All private clinics in Morocco that perform surgery and discharge at-risk patients</td><td>Several hundred private clinics nationally; Morocco's private health sector is expanding under the AMO universal-coverage reform</td></tr>
+    <tr><td><strong>SAM</strong> (Serviceable)</td><td>High-end cardiology, cardiac-surgery and internal-medicine clinics in Casablanca, Rabat, Marrakech, Tangier</td><td>Estimate 60–100 target clinics; validate by building a named list during month 1</td></tr>
+    <tr><td><strong>SOM</strong> (Obtainable, yr 1–2)</td><td>Clinics reachable through one well-networked medical distributor</td><td>10 contracts × avg. 25 active patients × $70 ≈ <span class="pos">$17,500 MRR</span></td></tr>
+  </table>
+
+  <h3>Why now</h3>
+  <p>Three tailwinds converge: (1) Morocco's push toward generalized health coverage is driving private-sector investment and patient volume; (2) cellular IoT hardware with medical CE marks is now cheap and off-the-shelf; (3) no dominant local RPM player exists yet — the competition is <strong>paper follow-up sheets and phone calls</strong>, not another startup.</p>
+
+  <div class="plain">
+    <div class="pl">PLAIN TERMS</div>
+    <p><strong>TAM / SAM / SOM:</strong> the standard investor pyramid — total market, the slice you can realistically serve, and the slice you can actually win first.</p>
+    <p><strong>MRR:</strong> Monthly Recurring Revenue — the subscription income that repeats every month without new sales effort.</p>
+  </div>
+</div></section>
+
+<!-- ================= 03 ================= -->
+<section id="s3"><div class="wrap">
+  <div class="eyebrow">SECTION 03</div>
+  <h2>Technical Architecture <span class="badge orig">ORIGINAL</span></h2>
+  <p class="lead">Healthcare telemetry is continuous and life-critical, so the backend skips fragile request/response web APIs in favor of an immutable, event-driven streaming pipeline.</p>
+
+  <div class="pipe">
+    <div class="node"><span class="t">Cellular OEM wearable</span><span class="d">Encrypted MQTT over 4G LTE-M — no Wi-Fi, no Bluetooth, no app. Works out of the box.</span></div>
+    <div class="arrow">│ ▼</div>
+    <div class="node"><span class="t">AWS IoT Core</span><span class="d">Secure front door: authenticates every device and receives the encrypted packets.</span></div>
+    <div class="arrow">│ ▼</div>
+    <div class="node"><span class="t">Amazon MSK (Kafka)</span><span class="d">Immutable log absorbing millions of data points per minute without dropping a packet. 24-hour retention.</span></div>
+    <div class="arrow">│ ▼</div>
+    <div class="node alert"><span class="t">Alerting engine (Go/Rust)</span><span class="d">Watches the stream in real time. SpO₂ &lt; 90% or an acute heart-rate spike bypasses the database and fires the WebSocket dashboard alert + emergency SMS (Twilio / Infobip) instantly.</span></div>
+    <div class="arrow">│ ▼</div>
+    <div class="node"><span class="t">Amazon EKS + ArgoCD</span><span class="d">All services run containerized on Kubernetes, deployed by GitOps: zero-downtime updates, self-healing, automatic rollback.</span></div>
+    <div class="arrow">│ ▼</div>
+    <div class="node"><span class="t">Amazon S3 Standard-IA</span><span class="d">After evaluation, telemetry is bundled and archived to cheap, compliant long-term storage.</span></div>
+  </div>
+
+  <div class="plain">
+    <div class="pl">PLAIN TERMS</div>
+    <p><strong>MQTT:</strong> a lightweight messaging language designed for small devices on weak networks — like SMS for machines, but constant and encrypted.</p>
+    <p><strong>Kafka:</strong> a conveyor belt for data. Every reading is placed on the belt in order and nothing falls off, even at huge volume.</p>
+    <p><strong>Kubernetes (EKS) + ArgoCD (GitOps):</strong> the software runs in identical containers; the desired state lives in Git, and the cluster continuously corrects itself to match it. If a server dies at 3 a.m., it heals without human intervention.</p>
+    <p><strong>Why the alert "bypasses the database":</strong> writing to disk first adds seconds. For a patient whose oxygen is crashing, the alarm must fire in milliseconds — storage happens afterwards.</p>
+  </div>
+
+  <h3>Added engineering requirement: alert delivery guarantees</h3>
+  <p><span class="badge added" style="margin-left:0">ADDED</span> &nbsp;An alert that silently fails is a lawsuit. The pipeline must include: delivery acknowledgement (a nurse must tap "seen" within N minutes or the alert escalates to a second phone), a dead-man switch for devices that stop transmitting (no data for 15 min = its own alert type), and a monthly end-to-end fire-drill test per clinic.</p>
+</div></section>
+
+<!-- ================= 04 ================= -->
+<section id="s4"><div class="wrap">
+  <div class="eyebrow">SECTION 04</div>
+  <h2>Hardware Procurement Strategy <span class="badge orig">ORIGINAL</span></h2>
+  <p class="lead">We never build hardware. We white-label medically certified devices from established Asian OEM/ODM factories and point their firmware at our cloud.</p>
+
+  <div class="grid g2">
+    <div class="card"><div class="k">DEVICE CLASS A</div><h4>Continuous ECG patches</h4><p>e.g. Viatom / Wellue ER1 class — 18g clinical single-lead ECG worn on the chest, streaming heart data continuously for 24–72h.</p></div>
+    <div class="card"><div class="k">DEVICE CLASS B</div><h4>Cellular blood-pressure cuffs</h4><p>e.g. Transtek TeleRPM class — familiar-looking home BP monitor with a built-in SIM that transmits each reading on button-press.</p></div>
+  </div>
+
+  <h3>Procurement pipeline</h3>
+  <div class="tl">
+    <div class="step"><div class="m">STEP 1 · $1,500</div><h4>Prototype sampling</h4><p>Buy 5–10 developer units across target OEMs. Reverse the JSON payload structure and validate the full ingestion loop in the dev environment.</p></div>
+    <div class="step"><div class="m">STEP 2</div><h4>Factory selection</h4><p>Only factories holding an active <strong>Medical CE Mark</strong> qualify — Moroccan regulation mirrors European frameworks, so CE dramatically accelerates import approval.</p></div>
+    <div class="step"><div class="m">STEP 3 · MOQ ~500 · first batch 50 ($6,000)</div><h4>White-label order</h4><p>Factory prints our logo on shells and boxes, and flashes firmware so devices transmit to <em>our</em> AWS IoT endpoints instead of the factory cloud.</p></div>
+    <div class="step"><div class="m">STEP 4 · ADDED</div><h4>Connectivity contract</h4><p>Sign an <strong>M2M SIM agreement</strong> with a Moroccan operator (Maroc Telecom / Orange / inwi) or a global roaming-SIM provider. Verify LTE-M/NB-IoT coverage on real routes patients travel — and require devices with 2G/4G Cat-1 fallback, because low-power IoT coverage outside major cities cannot be assumed.</p></div>
+  </div>
+
+  <div class="plain">
+    <div class="pl">PLAIN TERMS</div>
+    <p><strong>OEM / ODM / white-label:</strong> a factory that already designed and certified the device manufactures it with your brand on it. You skip years of hardware R&amp;D and certification.</p>
+    <p><strong>MOQ:</strong> Minimum Order Quantity — the smallest batch a factory will produce for a custom order.</p>
+    <p><strong>M2M SIM:</strong> a SIM card plan built for machines, not people — tiny data bundles, fleet management dashboard, per-device pricing.</p>
+  </div>
+</div></section>
+
+<!-- ================= 05 ================= -->
+<section id="s5"><div class="wrap">
+  <div class="eyebrow">SECTION 05</div>
+  <h2>Regulatory &amp; Compliance <span class="badge added">ADDED</span></h2>
+  <p class="lead">This is the section clinics' lawyers will read first. Health data is the most protected data category in Moroccan law, and it must be handled before the first patient is enrolled.</p>
+
+  <table>
+    <tr><th>Area</th><th>Requirement</th><th>Action</th></tr>
+    <tr><td><strong>Personal data — Law 09-08 / CNDP</strong></td><td>Processing health data in Morocco requires <em>prior authorization</em> (not just notification) from the CNDP, the national data-protection commission.</td><td>File the CNDP authorization dossier in month 1 with local counsel. Budgeted in the $10K legal line.</td></tr>
+    <tr><td><strong>Data residency &amp; transfers</strong></td><td>Sending Moroccan health data to foreign servers is a cross-border transfer needing CNDP approval.</td><td>Deploy in an approved AWS region, encrypt end-to-end, pseudonymize patient identity (device ID ↔ patient name mapping stays inside the clinic's system where feasible), and cover transfers explicitly in the CNDP filing.</td></tr>
+    <tr><td><strong>Medical device import — DMP</strong></td><td>Wearables must be registered/approved for import by the Ministry of Health's device directorate; the CE mark accelerates but does not replace this.</td><td>The OEM's CE technical file + a local importer of record. Confirm whether we or the distributor act as importer.</td></tr>
+    <tr><td><strong>Liability positioning</strong></td><td>The platform must not be construed as practicing medicine or guaranteeing intervention.</td><td>Contracts state: <em>the platform transmits data and alerts; all clinical decisions and response duties remain with the clinic</em>. Carry professional liability + cyber insurance.</td></tr>
+    <tr><td><strong>Patient consent</strong></td><td>Each patient must consent to remote monitoring and data processing.</td><td>Standard bilingual (Arabic/French) consent form signed at discharge, provided by us as part of the clinic onboarding kit.</td></tr>
+  </table>
+
+  <div class="plain">
+    <div class="pl">WHY THIS ORDER MATTERS</div>
+    <p>CNDP authorization can take months. Filing it in parallel with prototyping — not after — is what protects the 6-month go-live target. Nothing in the pilot may touch a real patient's identity until authorization is granted; early pilots can run on volunteer/staff data if needed.</p>
+  </div>
+</div></section>
+
+<!-- ================= 06 ================= -->
+<section id="s6"><div class="wrap">
+  <div class="eyebrow">SECTION 06</div>
+  <h2>Financial Plan &amp; Cost Control <span class="badge orig">ORIGINAL</span></h2>
+
+  <h3>Initial $150,000 capital allocation</h3>
+  <div style="margin:20px 0 30px">
+    <div class="bar-row"><div class="lbl">Working capital / scale reserve</div><div class="bar"><i style="width:76%"></i></div><div class="amt">$114,000</div></div>
+    <div class="bar-row"><div class="lbl">B2B sales closer (6-mo retainer + commission)</div><div class="bar"><i style="width:8%"></i></div><div class="amt">$12,000</div></div>
+    <div class="bar-row"><div class="lbl">Legal, CNDP licensing &amp; compliance</div><div class="bar"><i style="width:6.7%"></i></div><div class="amt">$10,000</div></div>
+    <div class="bar-row"><div class="lbl">Initial hardware fleet (50 units)</div><div class="bar"><i class="hot" style="width:4%"></i></div><div class="amt">$6,000</div></div>
+    <div class="bar-row"><div class="lbl">R&amp;D, prototyping, backend (founder sweat equity)</div><div class="bar"><i class="hot" style="width:3.3%"></i></div><div class="amt">$5,000</div></div>
+    <div class="bar-row"><div class="lbl">Marketing, contracts, French collateral</div><div class="bar"><i class="hot" style="width:2%"></i></div><div class="amt">$3,000</div></div>
+  </div>
+  <p>76% of capital stays liquid as runway — a deliberately conservative structure for a bootstrapped founder. The plan survives even if the first sales cycle takes twice as long as projected.</p>
+
+  <h3>Monthly AWS floor (the fixed cost of being alive)</h3>
+  <table>
+    <tr><th>Service</th><th>Purpose</th><th class="num">Monthly</th></tr>
+    <tr><td>EKS control plane</td><td>Kubernetes management (flat fee)</td><td class="num">$73</td></tr>
+    <tr><td>EKS worker nodes</td><td>3× m7g.medium Graviton across multiple availability zones</td><td class="num">~$215</td></tr>
+    <tr><td>Amazon MSK</td><td>3-node multi-AZ Kafka cluster (kafka.m7g.large) — zero data loss</td><td class="num">~$460</td></tr>
+    <tr><td>Networking &amp; storage</td><td>Load balancers, NAT gateways, cross-zone transfer, EBS</td><td class="num">~$150</td></tr>
+    <tr><td><strong>Total base bill</strong></td><td></td><td class="num pos"><strong>~$900</strong></td></tr>
+  </table>
+
+  <h3>Scale leverage: costs flat, revenue exponential</h3>
+  <table>
+    <tr><th>Clinics signed</th><th class="num">Revenue / mo</th><th class="num">Cloud bill</th><th class="num">Gross profit / mo</th></tr>
+    <tr><td>1</td><td class="num">$2,000</td><td class="num">$900</td><td class="num pos">$1,100</td></tr>
+    <tr><td>5</td><td class="num">$10,000</td><td class="num">$950</td><td class="num pos">$9,050</td></tr>
+    <tr><td>10</td><td class="num">$20,000</td><td class="num">$1,100</td><td class="num pos">$18,900</td></tr>
+  </table>
+
+  <h3>DevOps cost-suppression mandates</h3>
+  <p><strong>Graviton everywhere:</strong> every EKS and MSK instance runs ARM-based AWS Graviton chips, cutting compute cost ~20% vs x86. <strong>Version hygiene:</strong> CI/CD alerts (GitHub Actions) track Kubernetes versions, because letting EKS fall into "Extended Support" spikes the control-plane fee from $73 to $438/month overnight.</p>
+
+  <h3>Added: costs the original plan under-counts</h3>
+  <p><span class="badge added" style="margin-left:0">ADDED</span> &nbsp;Budget lines to add to the operating model: <strong>M2M SIM data</strong> (~$1–3/device/month → ~$250–750/mo at 250 active patients), <strong>SMS alert costs</strong> (Twilio/Infobip per-message fees), <strong>device attrition</strong> (assume 5–10% of the fleet lost/damaged/not returned per year — build a deposit or replacement fee into clinic contracts), <strong>insurance premiums</strong>, and <strong>logistics/cleaning</strong> for devices rotating between patients (each returned device must be sanitized, battery-checked and re-kitted).</p>
+
+  <div class="plain">
+    <div class="pl">PLAIN TERMS</div>
+    <p><strong>Multi-AZ:</strong> the system runs simultaneously in physically separate data-center zones, so a single facility failure can't take patient monitoring offline.</p>
+    <p><strong>Gross profit here = revenue − cloud bill.</strong> It is not net profit: the sales retainer, SIM data, SMS, insurance and the founder's own salary come out of it next.</p>
+  </div>
+</div></section>
+
+<!-- ================= 07 ================= -->
+<section id="s7"><div class="wrap">
+  <div class="eyebrow">SECTION 07</div>
+  <h2>Go-To-Market &amp; Sales Execution <span class="badge orig">ORIGINAL</span></h2>
+  <p class="lead">Selling to individual patients is a low-margin trap. We sell to the people who control the beds: directors and chief cardiologists of high-end private clinics in Casablanca and Rabat.</p>
+
+  <h3>The money flow — everyone wins</h3>
+  <div class="flow">
+    <div class="fbox"><div class="a">$150</div><div class="w">Patient pays clinic for the "At-Home Digital Guard VIP" package</div></div>
+    <div class="fa">→</div>
+    <div class="fbox"><div class="a hot">$70</div><div class="w">Clinic pays us per active patient (the $60–80 PPPM fee)</div></div>
+    <div class="fa">→</div>
+    <div class="fbox"><div class="a">$80</div><div class="w">Clinic keeps as pure margin, per patient, per month</div></div>
+  </div>
+  <p>Upfront cost to the hospital: <strong>$0</strong>. No licenses, no hardware purchases. The clinic bills the patient, keeps the majority of the margin, and reduces its own readmission liability. The product sells the clinic a new revenue line, not a cost.</p>
+
+  <h3>The "Trojan Horse" pilot strategy</h3>
+  <div class="tl">
+    <div class="step"><div class="m">MOVE 1 · THE OPENER</div><h4>Hire the relationship, not just a salesperson</h4><p>A well-networked Moroccan medical-device distributor on a $2,000/mo retainer + commission. They already have the clinic directors' phone numbers and walk past gatekeepers.</p></div>
+    <div class="step"><div class="m">MOVE 2 · THE RISK-FREE OFFER</div><h4>Free 30-day trial, 10 devices</h4><p>Target 5 prominent private cardiology clinics: "Deploy these on your next 10 discharging patients. Pay nothing. Just watch my dashboard."</p></div>
+    <div class="step"><div class="m">MOVE 3 · THE HOOK</div><h4>Let the system catch its first event</h4><p>Within 30 days across 10 monitored patients, the platform will flag an anomaly — an arrhythmia, an oxygen dip — and the clinic intervenes early. Once the dashboard demonstrably protects a patient, the trial converts to a paid contract.</p></div>
+    <div class="step"><div class="m">TARGET</div><h4>10 clinic contracts within 6 months of market entry</h4><p>≈ $17.5–20K MRR, establishing operational cash-flow profitability in the first half-year.</p></div>
+  </div>
+
+  <p><span class="badge added" style="margin-left:0">ADDED</span> &nbsp;<strong>Honest caveat to present alongside the hook:</strong> a clinically significant event within any given 30-day/10-patient trial is likely but not guaranteed. The backup conversion argument is operational: earlier discharges, freed beds, and documented monitoring coverage — value that exists even in a quiet month. Never promise a "save."</p>
+</div></section>
+
+<!-- ================= 08 ================= -->
+<section id="s8"><div class="wrap">
+  <div class="eyebrow">SECTION 08</div>
+  <h2>Risk Analysis &amp; Mitigation <span class="badge added">ADDED</span></h2>
+  <p class="lead">A plan without a risk register reads as naive. These are the six risks most likely to kill or stall this business, ranked, with the mitigation already built into the plan.</p>
+
+  <table>
+    <tr><th>Risk</th><th>Severity</th><th>Mitigation</th></tr>
+    <tr><td><strong>Regulatory delay</strong> — CNDP authorization or device import approval takes longer than 6 months</td><td class="num neg">HIGH</td><td>File in month 1, in parallel with tech build; run pre-authorization pilots on staff volunteers; the $114K runway absorbs a slow start.</td></tr>
+    <tr><td><strong>Cellular coverage gaps</strong> — rural patients live exactly where LTE-M/NB-IoT is weakest</td><td class="num neg">HIGH</td><td>Require multi-network SIMs + 2G/4G Cat-1 fallback devices; run a coverage test on real patient home routes before fleet order; device buffers readings offline and bursts when signal returns.</td></tr>
+    <tr><td><strong>Missed-alert liability</strong> — a patient deteriorates and the alert chain fails or is ignored</td><td class="num neg">HIGH</td><td>Escalation ladder (unacknowledged alert auto-escalates), dead-man switch on silent devices, monthly fire drills, liability clearly assigned to the clinic in the contract, insurance.</td></tr>
+    <tr><td><strong>Clinic payment cycles</strong> — Moroccan B2B invoices commonly pay in 60–90 days</td><td class="num">MED</td><td>Month-in-advance billing written into the contract; the large cash reserve exists precisely to float receivables.</td></tr>
+    <tr><td><strong>Alert fatigue</strong> — too many false alarms and nurses start ignoring the dashboard</td><td class="num">MED</td><td>Per-patient thresholds set by the treating physician, not global defaults; tune during each pilot; track false-positive rate as a core KPI.</td></tr>
+    <tr><td><strong>Key-person risk</strong> — one founder is the entire engineering team</td><td class="num">MED</td><td>GitOps means the whole platform is reproducible from the repo; documented runbooks; first profit funds a contract DevOps engineer.</td></tr>
+  </table>
+</div></section>
+
+<!-- ================= 09 ================= -->
+<section id="s9"><div class="wrap">
+  <div class="eyebrow">SECTION 09</div>
+  <h2>12-Month Execution Roadmap <span class="badge added">ADDED</span></h2>
+  <div class="tl">
+    <div class="step"><div class="m">MONTHS 1–2</div><h4>Foundations</h4><p>Incorporate (SARL), open banking, file CNDP dossier, order OEM samples, build ingestion pipeline (IoT Core → Kafka → alert engine) against sample devices, sign M2M SIM agreement, hire the distributor/closer.</p></div>
+    <div class="step"><div class="m">MONTHS 3–4</div><h4>Product hardening</h4><p>Clinic dashboard v1 (French UI), SMS escalation ladder, dead-man switch, coverage field tests, place the 50-unit white-label order, prepare bilingual consent forms and contracts.</p></div>
+    <div class="step"><div class="m">MONTHS 4–6</div><h4>Pilot wave</h4><p>Deliver free 30-day trials to 5 cardiology clinics (10 devices each, staggered). Weekly threshold-tuning with each chief cardiologist. Collect testimonials and event logs.</p></div>
+    <div class="step"><div class="m">MONTHS 6–9</div><h4>Convert &amp; expand</h4><p>Convert pilots to paid PPPM contracts, reorder hardware from cash flow, extend the pilot playbook to the next 5 clinics, first contract hire (support/logistics).</p></div>
+    <div class="step"><div class="m">MONTHS 9–12</div><h4>Consolidate</h4><p>Target: 10 signed clinics, ~250 active patients, ≈$17.5K MRR. Publish a case study (readmission + bed-turnover data) — the sales weapon for year 2 and the evidence base for any future fundraise.</p></div>
+  </div>
+</div></section>
+
+<!-- ================= 10 ================= -->
+<section id="s10"><div class="wrap">
+  <div class="eyebrow">SECTION 10</div>
+  <h2>KPIs — What We Measure <span class="badge added">ADDED</span></h2>
+  <div class="grid g3">
+    <div class="card"><div class="k">BUSINESS</div><h4>MRR &amp; active patients</h4><p>Monthly recurring revenue; number of enrolled, transmitting patients. The heartbeat of the company.</p></div>
+    <div class="card"><div class="k">BUSINESS</div><h4>Pilot → paid conversion</h4><p>% of free trials converting to contracts. Target ≥ 60%. Below that, the pitch or the product needs surgery.</p></div>
+    <div class="card"><div class="k">CLINICAL VALUE</div><h4>Time-to-alert acknowledgement</h4><p>Minutes from threshold breach to a nurse tapping "seen." The number that proves the product works.</p></div>
+    <div class="card"><div class="k">CLINICAL VALUE</div><h4>False-positive rate</h4><p>% of alerts dismissed as non-events. High = alert fatigue = churn. Tuned per patient.</p></div>
+    <div class="card"><div class="k">OPERATIONS</div><h4>Fleet health</h4><p>% of devices transmitting in the last hour; device loss/damage rate; average turnaround time between patients.</p></div>
+    <div class="card"><div class="k">OPERATIONS</div><h4>Infra cost per patient</h4><p>Total cloud + SIM + SMS bill ÷ active patients. Should fall every quarter as the platform scales.</p></div>
+  </div>
+</div></section>
+
+<!-- ================= 11 ================= -->
+<section id="s11"><div class="wrap">
+  <div class="eyebrow">SECTION 11</div>
+  <h2>Open Items — What the Plan Still Needs <span class="badge added">ADDED</span></h2>
+  <p class="lead">The honest to-do list. Each item is a concrete action, not a vague intention.</p>
+  <ul class="check">
+    <li><strong>Company name &amp; legal entity.</strong> Choose the brand, register the SARL, secure the .ma domain and trademark.</li>
+    <li><strong>Clinical advisor.</strong> Recruit one respected Moroccan cardiologist as a paid/equity advisor — credibility in every pitch meeting and the person who sets default alert thresholds.</li>
+    <li><strong>Named clinic list.</strong> Build the 60–100 target-clinic spreadsheet with director names and warm-intro paths before hiring the closer.</li>
+    <li><strong>CNDP counsel engaged.</strong> Retain a Moroccan data-protection lawyer and start the authorization dossier immediately.</li>
+    <li><strong>Coverage field test.</strong> Drive-test LTE-M/NB-IoT and fallback coverage in 3–5 real patient home regions before committing to a device model.</li>
+    <li><strong>Insurance quotes.</strong> Professional liability + cyber policies priced and bound before the first real patient wears a device.</li>
+    <li><strong>Letters of intent.</strong> Even 2–3 non-binding LOIs from clinic directors transform this document from a plan into a fundable company.</li>
+  </ul>
+</div></section>
+
+<footer><div class="wrap">RPM MOROCCO · BUSINESS PLAN v2.0 · CONFIDENTIAL · GENERATED JULY 2026<br>Figures marked as assumptions require field validation. This document is a plan, not legal, financial, or medical advice.</div></footer>
+
+</main>
+</body>
+</html>
